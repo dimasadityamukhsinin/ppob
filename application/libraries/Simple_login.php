@@ -24,7 +24,7 @@ class Simple_login {
         }else
         {
             $this->CI->session->set_flashdata('warning', 'Username atau password salah!');
-            redirect(base_url('admin/login'), 'refresh');
+            redirect(base_url('login'), 'refresh');
         }
     }
 
@@ -32,7 +32,7 @@ class Simple_login {
     {
         if($this->CI->session->userdata('username') == ""){
             $this->CI->session->set_flashdata('warning','Anda belum login');
-            redirect(base_url('admin/login'),'refresh');
+            redirect(base_url('login'),'refresh');
         }
     }
 
@@ -42,7 +42,7 @@ class Simple_login {
         //Membuang semua session
         $this->CI->session->sess_destroy();
         $this->CI->session->set_flashdata('sukses', 'Anda Berhasil logout');
-        redirect(base_url('admin/login'), 'refresh');
+        redirect(base_url('login'), 'refresh');
     }
 }
 ?>
