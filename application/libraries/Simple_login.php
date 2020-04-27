@@ -9,23 +9,16 @@ class Simple_login {
     public function __construct()
     {
         $this->CI =& get_instance();
-        $this->CI->load->model('user_model');
     }
 
     public function login($username,$password)
     {
-        $cek = $this->CI->user_model->login($username,$password);
         //Jika ada data pengguna, maka session akan dibuat
-        if($cek)
+        if(($username == "admin") && ($password == "123456"))
         {
-            $id = $cek->user_id;
             $username = $cek->username;
-            $nama = $cek->nama;
-            $level = $cek->level;
             //Buat Session
-            $this->CI->session->set_userdata('id',$id);
             $this->CI->session->set_userdata('username',$username);
-            $this->CI->session->set_userdata('nama',$nama);
             //Jika sukses tampilkan halaman
             redirect(base_url('admin/dashboard'), 'refresh');
         }else
@@ -37,7 +30,7 @@ class Simple_login {
 
     public function cek_login()
     {
-        if($this->CI->session->userdata('id') == ""){
+        if($this->CI->session->userdata('username') == ""){
             $this->CI->session->set_flashdata('warning','Anda belum login');
             redirect(base_url('admin/login'),'refresh');
         }
