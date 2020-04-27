@@ -19,8 +19,6 @@
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     $result = curl_exec($ch);
-
-    echo $result;
 ?>
 
 <!-- Main content -->
